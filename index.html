@@ -20,12 +20,16 @@
 
     <nav class="navbar">
         <div class="logo">
-            <span class="flutter-blue">Flutter</span><span class="year">2026</span>
+            <span id="logo-tech" class="flutter-blue">Flutter</span><span class="year">2026</span>
         </div>
-        <div class="nav-links">
-            <a href="#hero">Start</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#resources">Resources</a>
+        <div class="nav-controls">
+            <div class="tech-switcher">
+                <select id="tech-select">
+                    <option value="flutter" selected>Flutter</option>
+                    <option value="react-native">React Native</option>
+                </select>
+                <i class="fas fa-chevron-down arrow-icon"></i>
+            </div>
         </div>
     </nav>
 
@@ -60,7 +64,9 @@
 
     <section id="roadmap" class="roadmap-section">
         <h2 class="section-title">The Path to Mastery</h2>
-        <div class="timeline">
+        
+        <!-- FLUTTER ROADMAP -->
+        <div id="roadmap-flutter" class="timeline active">
             <!-- Phase 1: Dart Language -->
             <div class="timeline-node left hidden">
                 <div class="node-content">
@@ -228,10 +234,142 @@
                 </div>
             </div>
         </div>
+
+        <!-- REACT NATIVE ROADMAP -->
+        <div id="roadmap-react-native" class="timeline" style="display: none;">
+             <!-- Phase 1: Foundation -->
+             <div class="timeline-node left hidden">
+                <div class="node-content">
+                    <div class="node-marker">01</div>
+                    <h3>React & TypeScript</h3>
+                    <span class="duration">Month 1-2</span>
+                    <p>Web fundamentals met strict typing. The foundation of modern app development.</p>
+                    <div class="topic-group">
+                        <h4>JavaScript & TS</h4>
+                        <ul class="topic-list">
+                            <li><i class="fab fa-js"></i> ES6+ Features (Async/Await, Arrays)</li>
+                            <li><i class="fas fa-code"></i> TypeScript Interfaces & Generics</li>
+                        </ul>
+                    </div>
+                    <div class="topic-group">
+                        <h4>React Fundamentals</h4>
+                        <ul class="topic-list">
+                            <li><i class="fab fa-react"></i> JSX & Components</li>
+                            <li><i class="fas fa-sync"></i> Props & State (Hooks API)</li>
+                            <li><i class="fas fa-infinity"></i> useEffect & Lifecycle</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2: Core Mobile -->
+            <div class="timeline-node right hidden">
+                <div class="node-content">
+                    <div class="node-marker">02</div>
+                    <h3>Core Mobile Development</h3>
+                    <span class="duration">Month 3</span>
+                    <p>Translating web skills to native UI. Styling and laying out the mobile experience.</p>
+                    <div class="topic-group">
+                        <h4>Framework</h4>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-tools"></i> Expo (Go & Dev Client)</li>
+                            <li><i class="fas fa-file-code"></i> Expo Config & Plugins</li>
+                        </ul>
+                    </div>
+                    <div class="topic-group">
+                        <h4>Layout & UI</h4>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-th"></i> Flexbox Deep Dive</li>
+                            <li><i class="fas fa-mobile"></i> Core Components (View, Text, Image)</li>
+                            <li><i class="fas fa-scroll"></i> ScrollView & FlatList</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3: Ecosystem -->
+            <div class="timeline-node left hidden">
+                <div class="node-content">
+                    <div class="node-marker">03</div>
+                    <h3>Ecosystem Expansion</h3>
+                    <span class="duration">Month 4-5</span>
+                    <p>Navigation, State, and Data. The triad of complex applications.</p>
+                    <div class="topic-group">
+                        <h4>Navigation</h4>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-compass"></i> React Navigation (Stack/Tab/Drawer)</li>
+                            <li><i class="fas fa-link"></i> Deep Linking</li>
+                        </ul>
+                    </div>
+                    <div class="topic-group">
+                        <h4>State Management</h4>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-database"></i> Zustand (Recommended)</li>
+                            <li><i class="fas fa-cubes"></i> Redux Toolkit (Enterprise)</li>
+                            <li><i class="fas fa-server"></i> TanStack Query (Server State)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Phase 4: Professional Engineering -->
+             <div class="timeline-node right hidden">
+                <div class="node-content">
+                    <div class="node-marker">04</div>
+                    <h3>Professional Engineering</h3>
+                    <span class="duration">Month 6-7</span>
+                    <p>Ensuring quality, stability, and smooth deployments.</p>
+                    <div class="topic-group">
+                        <h4>Testing</h4>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-vial"></i> Jest (Unit Tests)</li>
+                            <li><i class="fas fa-check-double"></i> React Native Testing Library</li>
+                            <li><i class="fas fa-robot"></i> Detox (E2E)</li>
+                        </ul>
+                    </div>
+                    <div class="topic-group">
+                        <h4>Start-to-Finish DevOps</h4>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-cloud-upload-alt"></i> EAS Build & Submit</li>
+                            <li><i class="fas fa-sync"></i> OTA Updates (Expo Updates)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 5: The Frontier -->
+            <div class="timeline-node left hidden">
+                <div class="node-content">
+                    <div class="node-marker">05</div>
+                    <h3>The New Architecture</h3>
+                    <span class="duration">Month 8+</span>
+                    <p>Unlocking native performance with the C++ core.</p>
+                    <div class="topic-group">
+                        <h4>Fabric & TurboModules</h4>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-microchip"></i> Synchronous Rendering (JSI)</li>
+                            <li><i class="fas fa-bolt"></i> High Performance Animations</li>
+                        </ul>
+                    </div>
+                    <div class="topic-group">
+                        <h4>Advanced UI</h4>
+                        <ul class="topic-list">
+                            <li><i class="fas fa-magic"></i> Reanimated 3</li>
+                            <li><i class="fas fa-paint-brush"></i> Skia (2D Graphics)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer id="resources">
-        <p>Built for the Visionaries. &copy; 2026 Flutter Roadmap</p>
+        <div style="margin-bottom: 1rem;">
+            <img src="https://a.storyblok.com/f/122804/x/8297da09e8/toobler-logo.svg" alt="Toobler Technologies" style="height: 40px; filter: brightness(0) invert(1);">
+        </div>
+        <p>Session conducted by <strong style="color: var(--primary-blue);">Toobler Technologies</strong></p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Mobile App Development Section by <span style="color: var(--text-color); font-weight: 600;">Vineeth Chandran</span></p>
+        <p style="margin-top: 1.5rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Developer Roadmap</p>
     </footer>
 
     <script src="script.js"></script>

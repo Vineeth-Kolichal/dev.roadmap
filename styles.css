@@ -1,8 +1,15 @@
+/* ... Previous styles ... */
+/* Retain all previous styles, but appending new specific styles for the switcher */
+/* Since I am using write_to_file with Overwrite=true, I need to include EVERYTHING. */
+/* This is safer to ensure consistency. */
+
 :root {
     --bg-color: #050b14;
     --text-color: #e0e6ed;
     --primary-blue: #40C4FF; /* Flutter Light Blue */
     --primary-dark: #027DFD; /* Flutter Dark Blue */
+    --rn-blue: #61DAFB; /* React Native Blue */
+    --rn-dark: #212121;
     --accent-cyan: #00E5FF;
     --accent-purple: #7C4DFF;
     --glass-bg: rgba(255, 255, 255, 0.05);
@@ -42,6 +49,7 @@ body {
     border-radius: 50%;
     filter: blur(100px);
     opacity: 0.4;
+    transition: background-color 1s ease;
 }
 
 .orb-1 {
@@ -60,6 +68,14 @@ body {
     bottom: -50px;
     right: -50px;
     animation: floating 12s infinite ease-in-out reverse;
+}
+
+/* Dynamic Orb Colors for React Native */
+body.react-native-theme .orb-1 {
+    background: #61DAFB; /* RN Blue */
+}
+body.react-native-theme .orb-2 {
+    background: #20232a; /* React Dark */
 }
 
 .grid-overlay {
@@ -96,20 +112,65 @@ body {
     font-size: 1.5rem;
 }
 
-.flutter-blue { color: var(--primary-blue); }
+.flutter-blue { color: var(--primary-blue); transition: color 0.5s; }
+body.react-native-theme .flutter-blue { color: var(--rn-blue); }
+
 .year { color: var(--text-color); margin-left: 5px; }
 
-.nav-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    margin-left: 2rem;
-    font-weight: 500;
-    transition: color 0.3s;
+/* Tech Switcher */
+.nav-controls {
+    display: flex;
+    align-items: center;
 }
 
-.nav-links a:hover {
+.tech-switcher {
+    position: relative;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 5px 20px;
+    transition: all 0.3s ease;
+}
+
+.tech-switcher:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+#tech-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    padding-right: 25px;
+    outline: none;
+    cursor: pointer;
+}
+
+#tech-select option {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.arrow-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.8rem;
     color: var(--primary-blue);
-    text-shadow: 0 0 10px rgba(64, 196, 255, 0.5);
+    transition: transform 0.3s, color 0.5s;
+}
+
+body.react-native-theme .arrow-icon {
+    color: var(--rn-blue);
 }
 
 /* Hero Section */
@@ -148,7 +209,9 @@ body {
 .highlight {
     color: var(--primary-blue);
     font-weight: 700;
+    transition: color 0.5s;
 }
+body.react-native-theme .highlight { color: var(--rn-blue); }
 
 /* Stats */
 .hero-stats {
@@ -167,7 +230,9 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--accent-cyan);
+    transition: color 0.5s;
 }
+body.react-native-theme .stat-number { color: var(--rn-blue); }
 
 .stat-label {
     font-size: 0.9rem;
@@ -184,13 +249,22 @@ body {
     text-decoration: none;
     font-weight: 600;
     border-radius: 50px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.5s;
     box-shadow: 0 10px 20px rgba(2, 125, 253, 0.3);
+}
+
+body.react-native-theme .cta-button {
+    background: linear-gradient(135deg, var(--rn-blue), #20232a);
+    box-shadow: 0 10px 20px rgba(97, 218, 251, 0.3);
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 30px rgba(2, 125, 253, 0.5);
+}
+
+body.react-native-theme .cta-button:hover {
+    box-shadow: 0 15px 30px rgba(97, 218, 251, 0.5);
 }
 
 .cta-button i {
@@ -222,6 +296,12 @@ body {
     background: url('https://storage.googleapis.com/cms-storage-bucket/0dbfcc7a59cd1cf16282.png') no-repeat center center; /* Flutter Logo URL */
     background-size: contain;
     opacity: 0.8;
+    transition: background-image 0.5s;
+}
+
+/* React Native Logo Logic (Handled via JS class) */
+body.react-native-theme .layer {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png');
 }
 
 .layer-1 { transform: translateZ(0); }
@@ -267,6 +347,12 @@ body {
     left: 50%;
     margin-left: -1px;
     box-shadow: 0 0 15px var(--primary-dark);
+    transition: background 0.5s;
+}
+
+body.react-native-theme .timeline::after {
+    background: linear-gradient(to bottom, var(--rn-blue), #ffffff);
+    box-shadow: 0 0 15px var(--rn-blue);
 }
 
 .timeline-node {
@@ -300,7 +386,12 @@ body {
     border-radius: 50%;
     z-index: 10;
     box-shadow: 0 0 10px var(--accent-cyan);
-    transition: background 0.3s;
+    transition: background 0.3s, border-color 0.5s, box-shadow 0.5s;
+}
+
+body.react-native-theme .timeline-node::after {
+    border-color: var(--rn-blue);
+    box-shadow: 0 0 10px var(--rn-blue);
 }
 
 .timeline-node.right::after {
@@ -309,6 +400,9 @@ body {
 
 .timeline-node:hover::after {
     background: var(--accent-cyan);
+}
+body.react-native-theme .timeline-node:hover::after {
+    background: var(--rn-blue);
 }
 
 /* Content Box */
@@ -319,13 +413,16 @@ body {
     border-radius: 16px;
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 
 .node-content:hover {
     transform: scale(1.02);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     border-color: var(--primary-blue);
+}
+body.react-native-theme .node-content:hover {
+    border-color: var(--rn-blue);
 }
 
 .node-marker {
@@ -346,6 +443,10 @@ body {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     color: var(--primary-blue);
+    transition: color 0.5s;
+}
+body.react-native-theme .node-content h3 {
+    color: var(--rn-blue);
 }
 
 .duration {
@@ -356,6 +457,11 @@ body {
     color: var(--primary-blue);
     border-radius: 12px;
     margin-bottom: 1rem;
+    transition: all 0.5s;
+}
+body.react-native-theme .duration {
+    background: rgba(97, 218, 251, 0.1);
+    color: var(--rn-blue);
 }
 
 /* Sub-topic Groups in Roadmap */
@@ -396,6 +502,10 @@ body {
 .topic-list li i {
     color: var(--accent-purple);
     font-size: 0.8rem;
+    transition: color 0.5s;
+}
+body.react-native-theme .topic-list li i {
+    color: var(--rn-blue);
 }
 
 /* Footer */
@@ -421,7 +531,6 @@ footer {
 /* Responsiveness */
 @media screen and (max-width: 768px) {
     .navbar { padding: 1.5rem; }
-    .nav-links { display: none; }
     
     .hero-section {
         flex-direction: column-reverse;
