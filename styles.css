@@ -663,6 +663,7 @@ footer {
 }
 
 .mobile-card .card-icon { color: var(--primary-blue); border: 1px solid rgba(64, 196, 255, 0.3); }
+.web-card .card-icon { color: #00E676; border: 1px solid rgba(0, 230, 118, 0.3); }
 .ai-card .card-icon { color: var(--accent-purple); border: 1px solid rgba(124, 77, 255, 0.3); }
 
 .roadmap-card:hover .card-icon {
